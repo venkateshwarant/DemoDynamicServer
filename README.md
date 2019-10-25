@@ -43,6 +43,68 @@ First follow https://github.com/venkateshwarant/UAT to install Java and Eclipse 
 
 ![Prev web](/src/images/52.png)
 
+## Downloading Tomcat server
+
+1) Download tomcat install package from https://tomcat.apache.org/download-90.cgi page. You can select zip file or tar.gz file. Here I've selected tar.gz file.
+
+Here we are downloading the currently available latest tomcat server (Tomcat version9)
+
+![create web project](/src/images/59.png)
+
+2) After download, unzip the compress file to a local directory.
+
+here is the downloaded tar.gz
+![create web project](/src/images/60.png)
+
+I've unzipped it in the same directory where the tar.gz file is present.
+
+![create web project](/src/images/61.png)
+
+3) Then navigate to the unzipped directory. For me unzipped directory is ~/Downloads/apache-tomcat-9.0.27
+
+Therefore
+'''
+cd ~/Downloads/apache-tomcat-9.0.27
+'''
+
+and run below command to make the .sh file executable.
+'''
+sudo chmod +x ./bin/*.sh
+'''
+
+Now all the .sh file in tomcat bin directory is executable, you can run ls -al command to see that.
+'''
+ls -al
+'''
+
+Now you can start the tomcat server by running
+
+'''
+sh bin/startup.sh
+'''
+
+You can see all of the above steps in the following image.
+![create web project](/src/images/62.png)
+
+4) The default port number in which the tomcat starts is 8080. If you wish to change the default port number then open cong > server.xml
+
+![create web project](/src/images/63.png)
+
+5) Change the content of server.xml from 8080 to 8081 as shown in the image.
+
+![create web project](/src/images/64.png)
+
+6) Then shutdown and start the tomcat server by running the following command.
+
+'''
+sh bin/shutdown.sh
+sh bin/startup.sh
+'''
+
+7) You can open any browser and load http://localhost:8081. You can see the default page of Apache as shown in the image
+
+![create web project](/src/images/65.png)
+
 ## Creating a new dynamic web project
 
 1) Open Eclipse, goto File > New > Project
@@ -53,3 +115,18 @@ First follow https://github.com/venkateshwarant/UAT to install Java and Eclipse 
 
 ![create web project](/src/images/54.png)
 
+3) Give corresponding name of your project and select the location to save the project. Then Click finish
+
+![create web project](/src/images/55.png)
+
+4) Select open perspective 
+
+![create web project](/src/images/56.png)
+
+5) Now your project is created. Go to src inside your project directory and then create a new servlet.
+
+![create web project](/src/images/57.png)
+
+6) Give proper package name and class name as shown in the image.
+
+![create web project](/src/images/58.png)
