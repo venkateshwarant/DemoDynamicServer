@@ -237,4 +237,33 @@ Instead of using eclipse for deploying our project, we can create the war file f
 
 Let's look into its procedure.
 
+1) Go to File > Export
 
+![create web project](/src/images/76.png)
+
+2) Select "war file", Then click next.
+
+![create web project](/src/images/77.png)
+
+3) Select the project for which you want to generate .war file and the destination where you want the .war file to be present. Click finish.
+
+![create web project](/src/images/78.png)
+
+4) Your war file will be generated in that specified location.
+
+![create web project](/src/images/79.png)
+
+5) Goto the location where the war file is generated and copy the war file into webapps location.
+
+Then create a folder with same name as of the war file. move the war file to that new directory.
+
+unzip the war file inside this directory.
+
+all the above steps are shown in the below image
+
+![create web project](/src/images/80.png)
+
+
+6) Then kill if any tomcat is running previously and again start the tomcat server, now you can see that the file is served from here.
+
+![create web project](/src/images/81.png)
