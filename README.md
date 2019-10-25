@@ -63,25 +63,25 @@ I've unzipped it in the same directory where the tar.gz file is present.
 3) Then navigate to the unzipped directory. For me unzipped directory is ~/Downloads/apache-tomcat-9.0.27
 
 Therefore
-'''
+```
 cd ~/Downloads/apache-tomcat-9.0.27
-'''
+```
 
 and run below command to make the .sh file executable.
-'''
+```
 sudo chmod +x ./bin/*.sh
-'''
+```
 
 Now all the .sh file in tomcat bin directory is executable, you can run ls -al command to see that.
-'''
+```
 ls -al
-'''
+```
 
 Now you can start the tomcat server by running
 
-'''
+```
 sh bin/startup.sh
-'''
+```
 
 You can see all of the above steps in the following image.
 ![create web project](/src/images/62.png)
@@ -96,10 +96,10 @@ You can see all of the above steps in the following image.
 
 6) Then shutdown and start the tomcat server by running the following command.
 
-'''
+```
 sh bin/shutdown.sh
 sh bin/startup.sh
-'''
+```
 
 7) You can open any browser and load http://localhost:8081. You can see the default page of Apache as shown in the image
 
@@ -130,3 +130,111 @@ sh bin/startup.sh
 6) Give proper package name and class name as shown in the image.
 
 ![create web project](/src/images/58.png)
+
+7) This is how automatically created servlet looks like the below image. Now It may show some compilation errors in eclipse as shown in the image below because we haven't added the servlet jars.
+
+![create web project](/src/images/66.png)
+
+
+8) To add the required jar, goto File > Configure Build path
+
+![create web project](/src/images/67.png)
+
+9) Then click "add library"
+
+![create web project](/src/images/68.png)
+
+10) Select "Server Runtime", click next
+
+![create web project](/src/images/69.png)
+
+11) Select "Apache Tomcat v9.0", then click finish
+
+![create web project](/src/images/70.png)
+
+12) You can see the newly added libraries for tomcat. Now Click "Apply and close". 
+
+![create web project](/src/images/71.png)
+
+13) Now you can see that all the code written in eclipse is compiled properly and there is no error in our java file.
+
+![create web project](/src/images/72.png)
+
+14) Paste the below content in the servlet file and save it.
+
+```
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class FirstServlet
+ */
+@WebServlet(description = "My First Servlet", urlPatterns = { "/FirstServlet" , "/FirstServlet.do"}, initParams = {@WebInitParam(name="id",value="1"),@WebInitParam(name="name",value="venkat")})
+public class FirstServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	public static final String HTML_START="<html><body>";
+	public static final String HTML_END="</body></html>";
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public FirstServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		Date date = new Date();
+		out.println(HTML_START + "<h2>Hi There!</h2><br/><h3>Date="+date +"</h3>"+HTML_END);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}
+```
+
+15) Click on run icon in eclipse as shown in the image.
+
+![create web project](/src/images/73.png)
+
+16) Select tomcat v9.0 option and click finish
+
+![create web project](/src/images/74.png)
+
+17) Now you can see that the eclipse runs our dynamic web project and deployed it in the tomcat server and it has started the server. we can now access our page by calling http://localhost:8081/DemoDynamicServer/FirstServlet in any browser.
+
+You can also see the web page in the eclipse as shown in the image too.
+
+![create web project](/src/images/75.png)
+
+## Exporting our dynamic web project's war file
+
+Instead of using eclipse for deploying our project, we can create the war file from eclipse, So that we can deploy it in any tomcat server.
+
+Let's look into its procedure.
+
+
