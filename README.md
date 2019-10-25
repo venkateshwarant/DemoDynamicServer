@@ -21,7 +21,7 @@ First follow https://github.com/venkateshwarant/UAT to install Java and Eclipse 
 
 4) Select web from the options available as shown in the image
 
-![Prev web](/src/main/47.png)
+![Prev web](/src/images/47.png)
 
 5) Click Next, It will fetch the details of all the softwares which are needed to be installed in eclipse so as to start developing a web project.
 
